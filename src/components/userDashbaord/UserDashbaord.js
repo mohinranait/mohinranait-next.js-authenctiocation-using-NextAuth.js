@@ -1,11 +1,15 @@
 'use client'
 import useAuth from '@/hooks/useAuth';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const UserDashbaord = () => {
-   const {user} = useAuth();
-   console.log(user);
+    const router = useRouter();
+    const {user} = useAuth();
+    if(user?._id && user?.role !== 'admin') {
+        router.push('/user')
+    }
     return (
         <div>
             <div>
