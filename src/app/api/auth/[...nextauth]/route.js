@@ -13,7 +13,6 @@ export const authOptions = {
 
             async authorize(credentials){
                 const { email, password } = credentials;
-                
                 try {
                     await connectDb()
                     const user = await User.findOne({ email });

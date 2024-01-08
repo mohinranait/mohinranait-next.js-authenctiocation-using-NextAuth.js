@@ -1,8 +1,8 @@
-import { getServerSession } from "next-auth";
+import ReduxProvider from "@/redux/ReduxProvider";
 import { AuthProvider } from "./Providers";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import AnotherProvider from "@/redux/AnotherProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +14,16 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   
   return (
-    <html lang="en" data-theme="light">
-      <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
-      </body>
-    </html>
+          <AuthProvider>
+            <ReduxProvider>
+           
+                <html lang="en" data-theme="light">
+                  <body className={inter.className}>
+                            {children}
+                  </body>
+                </html>
+            
+            </ReduxProvider>
+          </AuthProvider>
   );
 }

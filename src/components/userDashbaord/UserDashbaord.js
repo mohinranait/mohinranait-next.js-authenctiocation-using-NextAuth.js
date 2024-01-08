@@ -3,13 +3,15 @@ import useAuth from '@/hooks/useAuth';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const UserDashbaord = () => {
+    const {user} = useSelector(state => state?.authReducer)
     const router = useRouter();
-    const {user} = useAuth();
     if(user?._id && user?.role !== 'admin') {
-        router.push('/user')
+        router.replace( '/user')
     }
+
     return (
         <div>
             <div>

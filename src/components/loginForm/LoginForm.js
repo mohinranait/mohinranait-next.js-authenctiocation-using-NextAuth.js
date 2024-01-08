@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 
 
 const LoginForm = () => {
+    
     const [email, setEmail]= useState('')
     const [password, setPassword]= useState('');
     const [error, setError] = useState('')
@@ -53,7 +54,6 @@ const LoginForm = () => {
                     {
                         error &&  <div className='py-2 px-5 rounded-sm bg-red-500'>{error}</div>
                     }
-                   
                 </form>   
                 <p className='text-center'>Create a new account <Link href={'/register'} className='underline'>Register</Link> </p> 
             </div>  
